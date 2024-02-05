@@ -1,0 +1,9 @@
+# ninja log v5
+17	4081	7288302111479281	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	247c8bcd85d225a
+104	4150	7288302112517809	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	3fb1924efbc65a8f
+47	4218	7288302113015804	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	297531fba908bce1
+32	4683	7288302117966919	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	e298b600909f75a2
+78	5405	7288302125191130	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	a9baf99e11669ac2
+1	5763	7288302128226888	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	498320b585ba8ff0
+4086	8089	7288302151672181	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	78d0c3bb343ede4d
+8089	8636	7288302156682633	D:/Projects/Lucky Ceiling/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/5h2e5s67/obj/arm64-v8a/libgame.so	45e30944863b1cbc
