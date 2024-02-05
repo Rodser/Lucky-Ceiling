@@ -653,7 +653,7 @@ InputManager:
     type: 2
     axis: 5
     joyNum: 0
-  m_UsePhysicalKeys: 1
+  m_UsePhysicalKeys: 0
 --- !u!114 &841563197011470554
 MonoBehaviour:
   m_ObjectHideFlags: 0
