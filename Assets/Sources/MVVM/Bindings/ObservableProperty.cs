@@ -8,7 +8,7 @@ namespace Sources.MVVM.Bindings
         private readonly object _target;
         private readonly PropertyInfo _propertyInfo;
 
-        public event Action Changed; 
+        public event Action Changed;
 
         public ObservableProperty(object target, PropertyInfo propertyInfo)
         {
@@ -16,13 +16,15 @@ namespace Sources.MVVM.Bindings
             _propertyInfo = propertyInfo;
         }
 
-        public T Value => 
-            (T)_propertyInfo.GetValue(_target);
-
-        public void SetValue(T value)
+        public T Value
         {
-            _propertyInfo.SetValue(_target, value);
-            Changed?.Invoke();
+            get => (T) _propertyInfo.GetValue(_target);
+
+            set
+            {
+                _propertyInfo.SetValue(_target, value);
+                Changed?.Invoke();
+            }
         }
     }
 }
