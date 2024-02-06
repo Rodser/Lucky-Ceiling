@@ -8,7 +8,8 @@
         "Extansions",
         "StateMachine",
         "Helps",
-        "UniTask"
+        "UniTask",
+        "Domain"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -2,6 +2,8 @@ using System;
 using Sources.App.Infrastructure.Implementation.Factories.Presentations;
 using Sources.App.Infrastructure.Implementation.Services.Stores;
 using Sources.App.Infrastructure.Interfaces.Inputs;
+using Sources.App.Storabls;
+using Sources.Domain.Models.SpotLamps;
 using Sources.Helps;
 using Sources.StateMachine.Infrastructure.Implementation.Repositories;
 using Sources.StateMachine.Infrastructure.Implementation.Services.Updates;
@@ -42,13 +44,13 @@ namespace Sources.App.Controllers.Implementations.Scenes
 
             _storeService.Load();
 
-             //     var viewAirplane = _airplaneViewFactory.Create(new Airplane());
-             // _storableRepository.Add(new AirplaneStorable(new Airplane()));
+            // var model = new SpotLamp(Vector3.zero);
+            // var view = _spotLampViewFactory.Create(model);
+            // _storableRepository.Add(new SpotLampStorable(model));
         }
 
         public override void Exit()
         {
-            
         }
 
         public void Update(float deltaTime)

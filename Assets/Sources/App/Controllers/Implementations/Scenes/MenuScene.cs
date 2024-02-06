@@ -3,18 +3,18 @@ using Sources.StateMachine.Infrastructure.Interfaces.Services.Scenes;
 
 namespace Sources.App.Controllers.Implementations.Scenes
 {
-    public class GameMenuScene : BaseScene
+    public class MenuScene : BaseScene
     {
         private readonly ISceneChanger _sceneChanger;
         private readonly ISceneManageService _sceneManageService;
 
-        public GameMenuScene(ISceneChanger sceneChanger, ISceneManageService sceneManageService)
+        public MenuScene(ISceneChanger sceneChanger, ISceneManageService sceneManageService)
         {
             _sceneChanger = sceneChanger;
             _sceneManageService = sceneManageService;
         }
 
-        public override string Name { get; } = nameof(GameMenuScene);
+        public override string Name { get; } = nameof(MenuScene);
 
         public override async void Enter()
         {

@@ -20,7 +20,7 @@ namespace Sources.App.Applications
             
             var sceneFactories = new Dictionary<Type, ISceneFactory>()
             {
-                [typeof(GameMenuScene)] = new GameMenuSceneFactory(sceneManageService),
+                [typeof(MenuScene)] = new GameMenuSceneFactory(sceneManageService),
                 [typeof(GameplayScene)] = new GameplaySceneFactory(sceneManageService),
             };
 

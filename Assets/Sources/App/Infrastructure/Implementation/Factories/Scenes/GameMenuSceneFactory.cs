@@ -15,7 +15,7 @@ namespace Sources.App.Infrastructure.Implementation.Factories.Scenes
 
         public IScene Create(ISceneChanger sceneChanger)
         {
-            return new GameMenuScene(sceneChanger, _sceneManageService);
+            return new MenuScene(sceneChanger, _sceneManageService);
         }
     }
 }

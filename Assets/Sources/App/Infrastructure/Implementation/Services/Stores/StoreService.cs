@@ -24,7 +24,7 @@ namespace Sources.App.Infrastructure.Implementation.Services.Stores
 
         public void Load()
         {
-            var storables = _dataSource.Load().Select(model =>
+            var storables = _dataSource.Load()?.Select(model =>
             {
                 var type = Type.GetType(model.Type);
                 RegLog.Print("Load type: " + type.Name);
@@ -37,6 +37,7 @@ namespace Sources.App.Infrastructure.Implementation.Services.Stores
                 storable?.Load(_viewFactoryProvider);
                 _repository.Add(storable);
             }
+            
         }
 
         public void Save()
