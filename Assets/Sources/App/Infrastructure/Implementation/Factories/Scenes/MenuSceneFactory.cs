@@ -4,11 +4,11 @@ using Sources.StateMachine.Infrastructure.Interfaces.Services.Scenes;
 
 namespace Sources.App.Infrastructure.Implementation.Factories.Scenes
 {
-    public class GameMenuSceneFactory : ISceneFactory
+    public class MenuSceneFactory : ISceneFactory
     {
         private readonly ISceneManageService _sceneManageService;
 
-        public GameMenuSceneFactory(ISceneManageService sceneManageService)
+        public MenuSceneFactory(ISceneManageService sceneManageService)
         {
             _sceneManageService = sceneManageService;
         }

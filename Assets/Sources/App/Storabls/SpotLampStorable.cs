@@ -17,10 +17,12 @@ namespace Sources.App.Storabls
         public SpotLampStorable(SpotLamp spotLamp)
         {
             SpotLamp = spotLamp ?? throw new ArgumentNullException(nameof(spotLamp));
+            Position = new Vector2Data();
         }
 
         public SpotLampStorable()
         {
+            SpotLamp = new SpotLamp(Vector3.zero);
         }
         
         [JsonIgnore]
@@ -30,10 +32,9 @@ namespace Sources.App.Storabls
         public void Load(IViewFactoryProvider viewFactoryProvider)
         {
             var factory = viewFactoryProvider.Get<SpotLampViewFactory>();
-            
-            SpotLamp = new SpotLamp(Vector3.zero);
-            SpotLamp.Position = Position.Vector2DataToVector2();
+
             factory.Create(SpotLamp);
+            SpotLamp.Position = Position.Vector2DataToVector2();
         }
 
         public void Save()

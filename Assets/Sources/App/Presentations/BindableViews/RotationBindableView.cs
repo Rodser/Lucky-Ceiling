@@ -2,7 +2,7 @@ using System.Reflection;
 using Sources.MVVM.Bindings;
 using UnityEngine;
 
-namespace Sources.MVVM.BindableViews
+namespace Sources.App.Presentations.BindableViews
 {
     public class RotationBindableView : MonoBehaviour, IBindableView<Vector3>
     {

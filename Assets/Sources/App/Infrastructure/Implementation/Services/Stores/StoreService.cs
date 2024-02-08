@@ -1,11 +1,15 @@
 using System;
 using System.Linq;
 using Newtonsoft.Json;
+using Sources.App.Infrastructure.Implementation.Factories.Presentations;
 using Sources.App.Infrastructure.Interfaces.Repositories;
 using Sources.App.Infrastructure.Interfaces.Stores;
+using Sources.App.Storabls;
 using Sources.Domain.Models;
+using Sources.Domain.Models.SpotLamps;
 using Sources.Helps;
 using Sources.StateMachine.Infrastructure.Interfaces.Providers;
+using UnityEngine;
 
 namespace Sources.App.Infrastructure.Implementation.Services.Stores
 {
@@ -37,7 +41,6 @@ namespace Sources.App.Infrastructure.Implementation.Services.Stores
                 storable?.Load(_viewFactoryProvider);
                 _repository.Add(storable);
             }
-            
         }
 
         public void Save()

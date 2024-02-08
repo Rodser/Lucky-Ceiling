@@ -9,7 +9,6 @@ namespace Sources.App.Infrastructure.Implementation.Factories.Presentations
 {
     public class SpotLampViewFactory : IFactory<IView>
     {
-        
         public SpotLampView Create(SpotLamp spotLamp)
         {
             var spotLampViewModel = new SpotLampViewModel(spotLamp);

@@ -1,5 +1,7 @@
+using System.Globalization;
+using Sources.App.Presentations.BindableViews;
 using Sources.Domain.Models.SpotLamps;
-using Sources.MVVM.BindableViews;
+using Sources.Helps;
 using Sources.MVVM.Bindings;
 using Sources.MVVM.Bindings.Attributes;
 using Sources.MVVM.ViewModels;
@@ -9,7 +11,6 @@ namespace Sources.App.ViewModels
 {
     public class SpotLampViewModel : ViewModel<SpotLamp>
     {
-        
         [ComponentBinder(typeof(PositionBindableView))]
         private ObservableProperty<Vector3> _position;
        
@@ -29,7 +30,8 @@ namespace Sources.App.ViewModels
 
         private void OnPositionChanged()
         {
-            Model.Position = _position.Value;
+            RegLog.Print(Model.Position.x.ToString());
+            _position.Value = Model.Position;
         }
     }
 }

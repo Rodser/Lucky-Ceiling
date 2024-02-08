@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Sources.App.Infrastructure.Interfaces.Repositories;
 
-namespace Sources.StateMachine.Infrastructure.Implementation.Repositories
+namespace Sources.App.Infrastructure.Implementation.Repositories
 {
     public class StorableRepository : IRepository
     {
