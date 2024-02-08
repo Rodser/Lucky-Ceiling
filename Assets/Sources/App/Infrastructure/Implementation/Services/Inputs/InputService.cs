@@ -1,42 +1,45 @@
 using System;
 using Sources.App.Infrastructure.Interfaces.Inputs;
-using Sources.Domain;
 using UnityEngine;
 
 namespace Sources.App.Infrastructure.Implementation.Services.Inputs
 {
     public class InputService : IInputService
     {
+        public event Action<Vector3, float> DirectionChanged;
         public event Action Saved;
         public event Action Loaded;
         
-        public InputData InputData { get; set; } 
-        
         public void Update(float deltaTime)
         {
-            var isFire = false;
-            var direction = Vector2.zero;
+            var changed = false;
+            var direction = Vector3.zero;
             
-            if (Input.GetKey(KeyCode.Space))
-            {
-                isFire = true;
-            }
             if (Input.GetKey(KeyCode.A))
             {
-                direction += Vector2.left;
+                direction += Vector3.left;
+                changed = true;
             }
             if (Input.GetKey(KeyCode.D))
             {
-                direction += Vector2.right;
+                direction += Vector3.right;
+                changed = true;
             }
             if (Input.GetKey(KeyCode.W))
             {
-                direction += Vector2.up;
+                direction += Vector3.forward;
+                changed = true;
             }
             if (Input.GetKey(KeyCode.S))
             {
-                direction += Vector2.down;
+                direction += Vector3.back;
+                changed = true;
             }
+            if (changed)
+            {
+                DirectionChanged?.Invoke(direction, deltaTime);
+            }
+            
             if (Input.GetKeyDown(KeyCode.C))
             {
                 Saved?.Invoke();
@@ -45,8 +48,6 @@ namespace Sources.App.Infrastructure.Implementation.Services.Inputs
             {
                 Loaded?.Invoke();
             }
-
-            InputData = new InputData(direction, isFire);
         }
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Sources.App.Infrastructure.Interfaces.Repositories;
 
 namespace Sources.App.Infrastructure.Implementation.Repositories
@@ -20,6 +21,11 @@ namespace Sources.App.Infrastructure.Implementation.Repositories
         public IEnumerable<IStorable> GetAll()
         {
             return _models;
+        }
+
+        public IStorable Get<T>() where T : IStorable
+        {
+            return _models.FirstOrDefault(x => x.GetType() == typeof(T));
         }
 
         public void Clear()

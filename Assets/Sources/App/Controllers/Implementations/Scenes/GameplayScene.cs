@@ -54,6 +54,13 @@ namespace Sources.App.Controllers.Implementations.Scenes
 
             _inputService.Saved += OnSave;
             _inputService.Loaded += OnLoad;
+            _inputService.DirectionChanged += OnDirectionChanged;
+        }
+
+        private void OnDirectionChanged(Vector3 direction, float deltaTime)
+        {
+            var spotLampStorable = (SpotLampStorable) _storableRepository.Get<SpotLampStorable>();
+            _movable.Move(spotLampStorable.SpotLamp, direction, deltaTime);
         }
 
         public override void Exit()

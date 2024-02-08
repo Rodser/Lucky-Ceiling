@@ -5,7 +5,7 @@ namespace Sources.Domain.Models.SpotLamps
 {
     public class SpotLamp
     {
-        private Vector2 _position;
+        private Vector3 _position;
         
         public event Action PositionChanged;
 
@@ -14,7 +14,7 @@ namespace Sources.Domain.Models.SpotLamps
             Position = position;
         }
         
-        public Vector2 Position
+        public Vector3 Position
         {
             get => _position;
             set

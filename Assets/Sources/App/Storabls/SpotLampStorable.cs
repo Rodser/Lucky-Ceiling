@@ -4,7 +4,7 @@ using Sources.App.Infrastructure.Implementation.Factories.Presentations;
 using Sources.App.Infrastructure.Interfaces.Repositories;
 using Sources.Domain;
 using Sources.Domain.Models.SpotLamps;
-using Sources.Extensions.Vector2;
+using Sources.Extensions.Vector3;
 using Sources.StateMachine.Infrastructure.Interfaces.Providers;
 using UnityEngine;
 
@@ -17,7 +17,7 @@ namespace Sources.App.Storabls
         public SpotLampStorable(SpotLamp spotLamp)
         {
             SpotLamp = spotLamp ?? throw new ArgumentNullException(nameof(spotLamp));
-            Position = new Vector2Data();
+            Position = new Vector3Data();
         }
 
         public SpotLampStorable()
@@ -27,19 +27,19 @@ namespace Sources.App.Storabls
         
         [JsonIgnore]
         public SpotLamp SpotLamp { get; private set; }
-        public Vector2Data Position { get; set; }
+        public Vector3Data Position { get; set; }
         
         public void Load(IViewFactoryProvider viewFactoryProvider)
         {
             var factory = viewFactoryProvider.Get<SpotLampViewFactory>();
 
             factory.Create(SpotLamp);
-            SpotLamp.Position = Position.Vector2DataToVector2();
+            SpotLamp.Position = Position.Vector3DataToVector3();
         }
 
         public void Save()
         {
-            Position = SpotLamp.Position.Vector2ToVector2Data();
+            Position = SpotLamp.Position.Vector3ToVector3Data();
         }
     }
 }
