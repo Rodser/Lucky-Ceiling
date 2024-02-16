@@ -9,7 +9,8 @@
         "StateMachine",
         "Helps",
         "UniTask",
-        "Domain"
+        "Domain",
+        "Unity.InputSystem"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

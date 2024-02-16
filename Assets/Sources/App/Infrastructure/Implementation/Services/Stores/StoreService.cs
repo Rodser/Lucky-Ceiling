@@ -36,6 +36,8 @@ namespace Sources.App.Infrastructure.Implementation.Services.Stores
                 return (IStorable) JsonConvert.DeserializeObject(model.Data, type);
             });
 
+            if (storables == null) return;
+            
             foreach (IStorable storable in storables)
             {
                 storable?.Load(_viewFactoryProvider);

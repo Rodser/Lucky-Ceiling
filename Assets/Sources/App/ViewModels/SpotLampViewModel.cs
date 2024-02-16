@@ -30,7 +30,6 @@ namespace Sources.App.ViewModels
 
         private void OnPositionChanged()
         {
-            RegLog.Print(Model.Position.x.ToString());
             _position.Value = Model.Position;
         }
     }

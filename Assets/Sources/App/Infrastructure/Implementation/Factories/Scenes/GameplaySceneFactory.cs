@@ -23,7 +23,7 @@ namespace Sources.App.Infrastructure.Implementation.Factories.Scenes
         public IScene Create(ISceneChanger sceneChanger)
         {
             var updateService = new UpdateService();
-            var inputService = new InputService();
+            var inputService = new InputService(new InputControl());
 
             var spotLampViewFactory = new SpotLampViewFactory();
 

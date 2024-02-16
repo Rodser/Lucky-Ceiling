@@ -23,7 +23,5 @@ namespace Sources.Domain.Models.SpotLamps
                 PositionChanged?.Invoke();
             }
         }
-
-        public float Speed { get; set; } = 5f;
     }
 }
