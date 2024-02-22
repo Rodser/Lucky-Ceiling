@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Sources.Domain.Models.SpotLamps
 {
-    public class SpotLamp
+    public class SpotLamp : ISelect
     {
         private Vector3 _position;
         

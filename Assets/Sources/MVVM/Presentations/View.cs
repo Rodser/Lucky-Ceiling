@@ -7,7 +7,7 @@ namespace Sources.MVVM.Presentations
 {
     public class View : MonoBehaviour, IView, IDisposable
     {
-        private IViewModel _viewModel;
+        protected IViewModel _viewModel;
         private Binder _binder;
 
         private void Construct(IViewModel viewModel, Binder binder)

@@ -2,18 +2,14 @@ using System;
 using Sources.App.Infrastructure.Implementation.Repositories;
 using Sources.App.Infrastructure.Implementation.Services.Inputs;
 using Sources.App.Infrastructure.Implementation.Services.Stores;
-using Sources.App.Presentations;
 using Sources.App.Services;
-using Sources.App.Storabls;
 using Sources.Domain.Models.SpotLamps;
 using Sources.Helps;
 using Sources.StateMachine.Infrastructure.Implementation.Services.Updates;
 using Sources.StateMachine.Infrastructure.Interfaces.Providers;
 using Sources.StateMachine.Infrastructure.Interfaces.Services.Scenes;
 using Sources.StateMachine.Infrastructure.Interfaces.Services.Updates;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Sources.App.Controllers.Implementations.Scenes
 {
@@ -27,6 +23,7 @@ namespace Sources.App.Controllers.Implementations.Scenes
         private readonly StoreService _storeService;
         private readonly StorableRepository _storableRepository;
         private LampMoveService _movable;
+        private SelectService _selectService;
 
         public override string Name { get; } = nameof(GameplayScene);
 
@@ -48,6 +45,7 @@ namespace Sources.App.Controllers.Implementations.Scenes
             await _sceneManageService.LoadSceneAsync(Name);
 
             _movable = new LampMoveService();
+            _selectService = new SelectService();
             
             _storeService.Load();
 
@@ -57,14 +55,15 @@ namespace Sources.App.Controllers.Implementations.Scenes
 
         private void OnClick(Vector2 position)
         {
-            var click = new ClickService(_viewFactoryProvider, _storableRepository);
+            var click = new ClickService(_viewFactoryProvider, _storableRepository, _selectService);
             click.Click(position);
         }
         
         private void OnDirectionChanged(Vector3 direction, float deltaTime)
         {
-            var spotLampStorable = (SpotLampStorable) _storableRepository.Get<SpotLampStorable>();
-            _movable.Move(spotLampStorable.SpotLamp, direction, deltaTime);
+            if (_selectService.SelectedObject == null) return;
+
+            _movable.Move((SpotLamp)_selectService.SelectedObject, direction, deltaTime);
         }
 
         public override void Exit()

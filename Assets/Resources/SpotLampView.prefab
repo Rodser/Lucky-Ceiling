@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4692530890110884173}
   - component: {fileID: 8653686516392487204}
   - component: {fileID: 5565175453319126102}
+  - component: {fileID: 6343738633464443954}
   m_Layer: 0
   m_Name: SpotLampView
   m_TagString: Untagged
@@ -58,6 +59,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6989e0decae4e7d968f63a94629283d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &6343738633464443954
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3977654184736739542}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 25.27257, y: 38.754246, z: 31.016342}
+  m_Center: {x: -14.098914, y: -18.515932, z: 0.21816874}
 --- !u!1001 &8992216718761869452
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -84,7 +106,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 758c85f273aa6a8479b5caa1dd4e0717,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 758c85f273aa6a8479b5caa1dd4e0717,
         type: 3}

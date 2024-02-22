@@ -1,7 +1,5 @@
-using System.Globalization;
 using Sources.App.Presentations.BindableViews;
 using Sources.Domain.Models.SpotLamps;
-using Sources.Helps;
 using Sources.MVVM.Bindings;
 using Sources.MVVM.Bindings.Attributes;
 using Sources.MVVM.ViewModels;
@@ -13,10 +11,12 @@ namespace Sources.App.ViewModels
     {
         [ComponentBinder(typeof(PositionBindableView))]
         private ObservableProperty<Vector3> _position;
-       
+
         public SpotLampViewModel(SpotLamp model) : base(model)
         {
         }
+
+        public SpotLamp SpotLamp => Model;
 
         public override void Enable()
         {
