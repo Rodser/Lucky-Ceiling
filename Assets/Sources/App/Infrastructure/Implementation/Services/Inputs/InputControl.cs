@@ -43,10 +43,19 @@ namespace Sources.App.Infrastructure.Implementation.Services.Inputs
                     ""name"": ""Select"",
                     ""type"": ""PassThrough"",
                     ""id"": ""13470012-9af4-41dc-8569-177210eb8c1f"",
-                    ""expectedControlType"": ""Touch"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Position"",
+                    ""type"": ""Value"",
+                    ""id"": ""a5db474c-4ff5-4390-bcc4-a8f398c4c940"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -71,6 +80,17 @@ namespace Sources.App.Infrastructure.Implementation.Services.Inputs
                     ""action"": ""Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""99216431-5a7e-4974-88ef-46a3ece2381e"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Position"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -87,6 +107,7 @@ namespace Sources.App.Infrastructure.Implementation.Services.Inputs
             m_BasicMap = asset.FindActionMap("BasicMap", throwIfNotFound: true);
             m_BasicMap_Direction = m_BasicMap.FindAction("Direction", throwIfNotFound: true);
             m_BasicMap_Select = m_BasicMap.FindAction("Select", throwIfNotFound: true);
+            m_BasicMap_Position = m_BasicMap.FindAction("Position", throwIfNotFound: true);
         }
 
         ~@InputControl()
@@ -155,12 +176,14 @@ namespace Sources.App.Infrastructure.Implementation.Services.Inputs
         private List<IBasicMapActions> m_BasicMapActionsCallbackInterfaces = new List<IBasicMapActions>();
         private readonly InputAction m_BasicMap_Direction;
         private readonly InputAction m_BasicMap_Select;
+        private readonly InputAction m_BasicMap_Position;
         public struct BasicMapActions
         {
             private @InputControl m_Wrapper;
             public BasicMapActions(@InputControl wrapper) { m_Wrapper = wrapper; }
             public InputAction @Direction => m_Wrapper.m_BasicMap_Direction;
             public InputAction @Select => m_Wrapper.m_BasicMap_Select;
+            public InputAction @Position => m_Wrapper.m_BasicMap_Position;
             public InputActionMap Get() { return m_Wrapper.m_BasicMap; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -176,6 +199,9 @@ namespace Sources.App.Infrastructure.Implementation.Services.Inputs
                 @Select.started += instance.OnSelect;
                 @Select.performed += instance.OnSelect;
                 @Select.canceled += instance.OnSelect;
+                @Position.started += instance.OnPosition;
+                @Position.performed += instance.OnPosition;
+                @Position.canceled += instance.OnPosition;
             }
 
             private void UnregisterCallbacks(IBasicMapActions instance)
@@ -186,6 +212,9 @@ namespace Sources.App.Infrastructure.Implementation.Services.Inputs
                 @Select.started -= instance.OnSelect;
                 @Select.performed -= instance.OnSelect;
                 @Select.canceled -= instance.OnSelect;
+                @Position.started -= instance.OnPosition;
+                @Position.performed -= instance.OnPosition;
+                @Position.canceled -= instance.OnPosition;
             }
 
             public void RemoveCallbacks(IBasicMapActions instance)
@@ -216,6 +245,7 @@ namespace Sources.App.Infrastructure.Implementation.Services.Inputs
         {
             void OnDirection(InputAction.CallbackContext context);
             void OnSelect(InputAction.CallbackContext context);
+            void OnPosition(InputAction.CallbackContext context);
         }
     }
 }

@@ -19,6 +19,12 @@ namespace Sources.App.Storabls
             SpotLamp = spotLamp ?? throw new ArgumentNullException(nameof(spotLamp));
             Position = new Vector3Data();
         }
+        
+        public SpotLampStorable(SpotLamp spotLamp, Vector3 position)
+        {
+            SpotLamp = spotLamp ?? throw new ArgumentNullException(nameof(spotLamp));
+            Position = position.Vector3ToVector3Data();
+        }
 
         public SpotLampStorable()
         {

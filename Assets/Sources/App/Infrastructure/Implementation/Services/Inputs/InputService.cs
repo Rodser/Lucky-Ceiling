@@ -12,8 +12,7 @@ namespace Sources.App.Infrastructure.Implementation.Services.Inputs
         private bool _isSelect;
 
         public event Action<Vector3, float> DirectionChanged;
-        public event Action Saved;
-        public event Action Loaded;
+        public event Action<Vector2> Click;
 
         public InputService(InputControl inputControl)
         {
@@ -37,8 +36,11 @@ namespace Sources.App.Infrastructure.Implementation.Services.Inputs
 
         private void OnSelect(InputAction.CallbackContext context)
         {
-            Debug.Log("select : " + context.valueType);
             _isSelect = context.ReadValueAsButton();
+            
+            if (!_isSelect) return;
+            var position = _inputControl.BasicMap.Position.ReadValue<Vector2>();
+            Click?.Invoke(position);
         }
 
         private void OnDirection(InputAction.CallbackContext context)

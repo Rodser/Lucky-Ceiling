@@ -7,7 +7,5 @@ namespace Sources.App.Infrastructure.Interfaces.Inputs
     public interface IInputService : IUpdatable
     {
         event Action<Vector3, float> DirectionChanged;
-        event Action Saved;
-        event Action Loaded;
     }
 }

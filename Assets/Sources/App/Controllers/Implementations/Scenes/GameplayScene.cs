@@ -2,6 +2,7 @@ using System;
 using Sources.App.Infrastructure.Implementation.Repositories;
 using Sources.App.Infrastructure.Implementation.Services.Inputs;
 using Sources.App.Infrastructure.Implementation.Services.Stores;
+using Sources.App.Presentations;
 using Sources.App.Services;
 using Sources.App.Storabls;
 using Sources.Domain.Models.SpotLamps;
@@ -10,7 +11,9 @@ using Sources.StateMachine.Infrastructure.Implementation.Services.Updates;
 using Sources.StateMachine.Infrastructure.Interfaces.Providers;
 using Sources.StateMachine.Infrastructure.Interfaces.Services.Scenes;
 using Sources.StateMachine.Infrastructure.Interfaces.Services.Updates;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Sources.App.Controllers.Implementations.Scenes
 {
@@ -44,19 +47,20 @@ namespace Sources.App.Controllers.Implementations.Scenes
         {
             await _sceneManageService.LoadSceneAsync(Name);
 
-            // var spot = new SpotLampStorable(new SpotLamp(Vector3.zero));
-            // spot.Load(_viewFactoryProvider);
-            // _storableRepository.Add(spot);
-
             _movable = new LampMoveService();
             
             _storeService.Load();
 
-            _inputService.Saved += OnSave;
-            _inputService.Loaded += OnLoad;
+            _inputService.Click += OnClick; 
             _inputService.DirectionChanged += OnDirectionChanged;
         }
 
+        private void OnClick(Vector2 position)
+        {
+            var click = new ClickService(_viewFactoryProvider, _storableRepository);
+            click.Click(position);
+        }
+        
         private void OnDirectionChanged(Vector3 direction, float deltaTime)
         {
             var spotLampStorable = (SpotLampStorable) _storableRepository.Get<SpotLampStorable>();
@@ -65,15 +69,14 @@ namespace Sources.App.Controllers.Implementations.Scenes
 
         public override void Exit()
         {
-            _inputService.Saved -= OnSave;
-            _inputService.Loaded -= OnLoad;
+            _inputService.Click -= OnClick; 
+            _inputService.DirectionChanged -= OnDirectionChanged;
         }
 
         public void Update(float deltaTime)
         {
             _inputService.Update(deltaTime);
             _updateService.Update(deltaTime);
-            
         }
 
         private void OnSave()
