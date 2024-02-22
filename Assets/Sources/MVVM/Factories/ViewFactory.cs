@@ -1,4 +1,5 @@
 using System.Reflection;
+using Sources.Helps.Assets;
 using Sources.MVVM.Presentations;
 using Sources.MVVM.ViewModels;
 using Binder = Sources.MVVM.Bindings.Binder;
@@ -10,8 +11,8 @@ namespace Sources.MVVM.Factories
         private const string ConstructMethodName = "Construct";
         private const BindingFlags DefaultBindingFlags =  BindingFlags.Instance | BindingFlags.NonPublic;
         
-        private PrefabViewFactory _prefabViewFactory = new ();
-        private Binder _binder = new ();
+        private readonly PrefabViewFactory _prefabViewFactory = new (new AssetProvider());
+        private readonly Binder _binder = new ();
 
         public TView Create<TView, TViewModel>(TViewModel viewModel)
             where TView : View
